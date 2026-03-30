@@ -1,0 +1,87 @@
+# ── SMA v9999 — Docker Compose ────────────────────────────────
+# Bao gồm: Python app + Redis cache + Nginx reverse proxy
+version: "3.9"
+
+services:
+
+  # ── Redis cache ──────────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_data:/data
+    networks:
+      - sma_net
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  # ── SMA Python app ───────────────────────────────────────────
+  sma:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      redis:
+        condition: service_healthy
+    environment:
+      # Bắt buộc thay đổi trước khi deploy
+      - SMA_ADMIN_PW=${SMA_ADMIN_PW:-changeme123!}
+      - SMA_RESET_PW=${SMA_RESET_PW:-reset456!}
+      # Optional: bật Polygon.io để US realtime
+      - POLYGON_API_KEY=${POLYGON_API_KEY:-}
+      # Redis
+      - REDIS_URL=redis://redis:6379/0
+      # Database path (persistent volume)
+      - DB_PATH=/data/sma.db
+      # Port
+      - PORT=9999
+      - WS_PORT=10000
+      # Telegram (optional)
+      - TG_TOKEN=${TG_TOKEN:-}
+      - TG_CHAT_ID=${TG_CHAT_ID:-}
+      # Email SMTP (optional)
+      - SMTP_HOST=${SMTP_HOST:-}
+      - SMTP_PORT=${SMTP_PORT:-587}
+      - SMTP_USER=${SMTP_USER:-}
+      - SMTP_PASS=${SMTP_PASS:-}
+    volumes:
+      - sma_data:/data
+    expose:
+      - "9999"
+      - "10000"
+    networks:
+      - sma_net
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:9999/api/health"]
+      interval: 30s
+      timeout: 10s
+      start_period: 15s
+      retries: 3
+
+  # ── Nginx reverse proxy ──────────────────────────────────────
+  nginx:
+    image: nginx:alpine
+    restart: unless-stopped
+    depends_on:
+      - sma
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./certs:/etc/nginx/certs:ro   # TLS certs (Let's Encrypt)
+      - nginx_logs:/var/log/nginx
+    networks:
+      - sma_net
+
+volumes:
+  sma_data:
+  redis_data:
+  nginx_logs:
+
+networks:
+  sma_net:
+    driver: bridge
