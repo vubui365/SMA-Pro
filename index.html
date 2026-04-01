@@ -2484,6 +2484,45 @@ body.light{
     <button class="ctab" onclick="switchChart('ha')" title="Heikin-Ashi">🕯 HA</button>
     <button class="ctab" id="trend-tab" onclick="switchChart('trend')" title="Dự đoán xu hướng giá">📊 Xu hướng</button>
   </div>
+  <!-- INDICATOR TOOLBAR -->
+  <div id="indicatorBar" style="display:none;padding:4px 12px 4px;background:var(--card2);border-bottom:1px solid var(--border);flex-wrap:wrap;gap:4px;align-items:center">
+    <span style="font-size:9px;color:var(--sub);font-weight:700;margin-right:2px">CHỈ BÁO:</span>
+    <!-- MA group -->
+    <div style="display:flex;gap:2px;flex-wrap:wrap">
+      <span style="font-size:9px;color:var(--sub);align-self:center;margin-right:2px">MA</span>
+      <button class="ibtn-ind" data-ind="ma5"   onclick="toggleInd('ma5')"   style="padding:2px 6px;border-radius:4px;border:1px solid var(--border);background:transparent;color:#94a3b8;font-size:9px;cursor:pointer">5</button>
+      <button class="ibtn-ind" data-ind="ma10"  onclick="toggleInd('ma10')"  style="padding:2px 6px;border-radius:4px;border:1px solid var(--border);background:transparent;color:#94a3b8;font-size:9px;cursor:pointer">10</button>
+      <button class="ibtn-ind" data-ind="ma20"  onclick="toggleInd('ma20')"  style="padding:2px 6px;border-radius:4px;border:1px solid #ffd600;background:rgba(255,214,0,.15);color:#ffd600;font-size:9px;cursor:pointer">20</button>
+      <button class="ibtn-ind" data-ind="ma50"  onclick="toggleInd('ma50')"  style="padding:2px 6px;border-radius:4px;border:1px solid #a855f7;background:rgba(168,85,247,.15);color:#a855f7;font-size:9px;cursor:pointer">50</button>
+      <button class="ibtn-ind" data-ind="ma200" onclick="toggleInd('ma200')" style="padding:2px 6px;border-radius:4px;border:1px solid #f03050;background:rgba(240,48,80,.15);color:#f03050;font-size:9px;cursor:pointer">200</button>
+    </div>
+    <div style="width:1px;height:14px;background:var(--border);margin:0 2px"></div>
+    <!-- EMA group -->
+    <div style="display:flex;gap:2px;flex-wrap:wrap">
+      <span style="font-size:9px;color:var(--sub);align-self:center;margin-right:2px">EMA</span>
+      <button class="ibtn-ind" data-ind="ema12" onclick="toggleInd('ema12')" style="padding:2px 6px;border-radius:4px;border:1px solid var(--border);background:transparent;color:#94a3b8;font-size:9px;cursor:pointer">12</button>
+      <button class="ibtn-ind" data-ind="ema26" onclick="toggleInd('ema26')" style="padding:2px 6px;border-radius:4px;border:1px solid var(--border);background:transparent;color:#94a3b8;font-size:9px;cursor:pointer">26</button>
+      <button class="ibtn-ind" data-ind="ema50" onclick="toggleInd('ema50')" style="padding:2px 6px;border-radius:4px;border:1px solid var(--border);background:transparent;color:#94a3b8;font-size:9px;cursor:pointer">50</button>
+    </div>
+    <div style="width:1px;height:14px;background:var(--border);margin:0 2px"></div>
+    <!-- Other indicators -->
+    <button class="ibtn-ind" data-ind="bb"      onclick="toggleInd('bb')"      style="padding:2px 6px;border-radius:4px;border:1px solid var(--border);background:transparent;color:#94a3b8;font-size:9px;cursor:pointer">BB</button>
+    <button class="ibtn-ind" data-ind="vwap"    onclick="toggleInd('vwap')"    style="padding:2px 6px;border-radius:4px;border:1px solid #22d3ee;background:rgba(34,211,238,.15);color:#22d3ee;font-size:9px;cursor:pointer">VWAP</button>
+    <button class="ibtn-ind" data-ind="ich"     onclick="toggleInd('ich')"     style="padding:2px 6px;border-radius:4px;border:1px solid var(--border);background:transparent;color:#94a3b8;font-size:9px;cursor:pointer">Ichimoku</button>
+    <button class="ibtn-ind" data-ind="fib"     onclick="toggleInd('fib')"     style="padding:2px 6px;border-radius:4px;border:1px solid var(--border);background:transparent;color:#94a3b8;font-size:9px;cursor:pointer">Fib</button>
+    <div style="width:1px;height:14px;background:var(--border);margin:0 2px"></div>
+    <!-- Sub-panel indicators -->
+    <button class="ibtn-ind" data-ind="rsi"     onclick="toggleInd('rsi')"     style="padding:2px 6px;border-radius:4px;border:1px solid var(--border);background:transparent;color:#94a3b8;font-size:9px;cursor:pointer">RSI</button>
+    <button class="ibtn-ind" data-ind="macd"    onclick="toggleInd('macd')"    style="padding:2px 6px;border-radius:4px;border:1px solid var(--border);background:transparent;color:#94a3b8;font-size:9px;cursor:pointer">MACD</button>
+    <button class="ibtn-ind" data-ind="stoch"   onclick="toggleInd('stoch')"   style="padding:2px 6px;border-radius:4px;border:1px solid var(--border);background:transparent;color:#94a3b8;font-size:9px;cursor:pointer">Stoch</button>
+    <button class="ibtn-ind" data-ind="adx"     onclick="toggleInd('adx')"     style="padding:2px 6px;border-radius:4px;border:1px solid var(--border);background:transparent;color:#94a3b8;font-size:9px;cursor:pointer">ADX</button>
+    <button class="ibtn-ind" data-ind="obv"     onclick="toggleInd('obv')"     style="padding:2px 6px;border-radius:4px;border:1px solid var(--border);background:transparent;color:#94a3b8;font-size:9px;cursor:pointer">OBV</button>
+    <button class="ibtn-ind" data-ind="vol"     onclick="toggleInd('vol')"     style="padding:2px 6px;border-radius:4px;border:1px solid var(--border);background:transparent;color:#94a3b8;font-size:9px;cursor:pointer">Volume</button>
+    <button class="ibtn-ind" data-ind="vp"      onclick="toggleInd('vp')"      style="padding:2px 6px;border-radius:4px;border:1px solid var(--border);background:transparent;color:#94a3b8;font-size:9px;cursor:pointer">Vol Profile</button>
+  </div>
+  <!-- Sub-panel for RSI/MACD/Stoch/ADX/OBV -->
+  <div id="indSubPanel" style="display:none;padding:0 12px;max-height:120px;overflow:hidden"></div>
+
   <!-- v28: Drawing overlay -->
   <div id="drawToolbarInner-v2" style="display:none;margin-bottom:4px">
     <div class="drawing-toolbar">
@@ -3577,6 +3616,10 @@ async function openMdl(sym){
   document.getElementById('mnote').value=wlItem?.note||''
   document.getElementById('mdl').style.display='flex'
   document.querySelectorAll('.ctab').forEach((b,i)=>b.classList.toggle('on',i===0))
+  // Show indicator bar + sync button active states
+  const _indBar=document.getElementById('indicatorBar')
+  if(_indBar) _indBar.style.display='flex'
+  if(typeof _syncIndButtons==='function') _syncIndButtons()
   drawChart(sym,'candle')
 }
 
@@ -3834,6 +3877,11 @@ function switchChart(m){
     const bm=b.getAttribute('onclick')?.match(/switchChart\('(\w+)'\)/)?.[1]
     b.classList.toggle('on', bm===m)
   })
+  // Show indicator bar only for candle/line modes
+  const indBar=document.getElementById('indicatorBar')
+  if(indBar) indBar.style.display=(m==='candle'||m==='line')?'flex':'none'
+  const subPanel=document.getElementById('indSubPanel')
+  if(subPanel&&m!=='candle'&&m!=='line') subPanel.style.display='none'
   // Hide all extra panes — overrides handle showing their own
   ;['haPane','intradayPane','trendPane'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none'})
   const wrap=document.querySelector('.cwrap'); if(wrap)wrap.style.display=''
@@ -3902,37 +3950,7 @@ function drawChart(sym,mode){
           if(i>=19)ma20d.push({time:candles[i].time,value:+(cls.slice(i-19,i+1).reduce((a,b)=>a+b,0)/20).toFixed(4)})
           if(i>=49)ma50d.push({time:candles[i].time,value:+(cls.slice(i-49,i+1).reduce((a,b)=>a+b,0)/50).toFixed(4)})
         }
-        if(ma20d.length){const m=chart.addLineSeries({color:'#ffd600',lineWidth:1,priceLineVisible:false,lastValueVisible:false});m.setData(ma20d)}
-        if(ma50d.length){const m=chart.addLineSeries({color:'#a855f7',lineWidth:1,priceLineVisible:false,lastValueVisible:false});m.setData(ma50d)}
-        // MA200 — xu hướng dài hạn
-        const ma200d=[]
-        for(let i=0;i<candles.length;i++){
-          if(i>=199)ma200d.push({time:candles[i].time,value:+(cls.slice(i-199,i+1).reduce((a,b)=>a+b,0)/200).toFixed(4)})
-        }
-        if(ma200d.length){const m=chart.addLineSeries({color:'#f03050',lineWidth:1,lineStyle:2,priceLineVisible:false,lastValueVisible:false});m.setData(ma200d)}
-        // VWAP line (nếu có)
-        const vwapVal=sd[_chartSym||mdlSym]?.analysis?.vwap||0
-        if(vwapVal>0){
-          const vwapLine=chart.addLineSeries({color:'#22d3ee',lineWidth:1,lineStyle:1,priceLineVisible:true,lastValueVisible:true,title:'VWAP'})
-          const vwapData=candles.slice(-20).map(c=>({time:c.time,value:vwapVal}))
-          if(vwapData.length) vwapLine.setData(vwapData)
-        }
         chart.timeScale().fitContent()
-        // ── Fibonacci Retracement Overlay ──
-        try {
-          const _fibs=[0,0.236,0.382,0.5,0.618,0.786,1]
-          const _fibColors=['#ef444488','#f9731688','#eab30888','#22c55e88','#3b82f688','#8b5cf688','#ef444488']
-          const _cl2=candles.map(d=>d.close)
-          const _hi=Math.max(..._cl2.slice(-50));const _lo=Math.min(..._cl2.slice(-50))
-          const _swing=_hi-_lo
-          if(_swing>0 && candles.length>=10){
-            _fibs.forEach((f,i)=>{
-              const _lvl=_hi-_swing*f
-              const _ls=chart.addLineSeries({color:_fibColors[i],lineWidth:1,lineStyle:1,priceLineVisible:false,lastValueVisible:true,title:`Fib ${(_fibColors[i],'')+(f*100).toFixed(1)}%`})
-              _ls.setData([{time:candles[0].time,value:_lvl},{time:candles[candles.length-1].time,value:_lvl}])
-            })
-          }
-        } catch(_fe){}
         let _roTimer=null
         const ro=new ResizeObserver(entries=>{
           // Dùng contentRect để tránh trigger lại DOM resize
@@ -3947,7 +3965,16 @@ function drawChart(sym,mode){
           },60)
         })
         ro.observe(el)
-        mdlChart={remove:()=>{clearTimeout(_roTimer);try{ro.disconnect();chart.remove()}catch(e){}}}
+        // Store chart + candle data for indicator overlay
+        window._lwcChart = chart
+        window._lwcCandles = candles
+        // Re-apply active indicators
+        _applyActiveIndicators(chart, candles, a)
+        mdlChart={remove:()=>{
+          clearTimeout(_roTimer)
+          window._lwcChart=null; window._lwcCandles=null
+          try{ro.disconnect();chart.remove()}catch(e){}
+        }}
         return
       }catch(err){console.error('[drawChart] LWC:',err)}
     }
@@ -13749,6 +13776,498 @@ function _renderSectorCompare(d, el) {
 // Keep old runComparison/setCmpPreset for backward compat (unused now)
 function runComparison() { runSectorCompare() }
 function setCmpPreset() {}
+
+// ══════════════════════════════════════════════════════════════════
+// INDICATOR SYSTEM — Toggle overlays on LWC candlestick chart
+// All calculations are client-side (free, no API)
+// ══════════════════════════════════════════════════════════════════
+
+// Default active indicators
+window._activeInds = new Set(['ma20','ma50','vwap'])
+// Store overlay series references to remove them on redraw
+window._indSeries = {}
+// Store sub-panel canvas instances
+window._subCharts = {}
+
+// Indicator metadata: color, label, type (overlay|sub)
+const IND_CFG = {
+  ma5:   {type:'overlay', color:'#06b6d4', lw:1, label:'MA5'},
+  ma10:  {type:'overlay', color:'#f59e0b', lw:1, label:'MA10'},
+  ma20:  {type:'overlay', color:'#ffd600', lw:1.5, label:'MA20'},
+  ma50:  {type:'overlay', color:'#a855f7', lw:1.5, label:'MA50'},
+  ma200: {type:'overlay', color:'#f03050', lw:1, ls:2, label:'MA200'},
+  ema12: {type:'overlay', color:'#34d399', lw:1, label:'EMA12'},
+  ema26: {type:'overlay', color:'#fb923c', lw:1, label:'EMA26'},
+  ema50: {type:'overlay', color:'#818cf8', lw:1, label:'EMA50'},
+  bb:    {type:'overlay', color:'#64748b', lw:1, label:'BB'},
+  vwap:  {type:'overlay', color:'#22d3ee', lw:1, ls:1, label:'VWAP'},
+  ich:   {type:'overlay', color:'#7c3aed', lw:1, label:'Ichimoku'},
+  fib:   {type:'overlay', color:'#f59e0b', lw:1, label:'Fibonacci'},
+  rsi:   {type:'sub', color:'#818cf8', label:'RSI(14)', height:80},
+  macd:  {type:'sub', color:'#06b6d4', label:'MACD', height:90},
+  stoch: {type:'sub', color:'#f59e0b', label:'Stoch(14,3)', height:80},
+  adx:   {type:'sub', color:'#34d399', label:'ADX(14)', height:80},
+  obv:   {type:'sub', color:'#fb923c', label:'OBV', height:80},
+  vol:   {type:'sub', color:'#3b82f6', label:'Volume', height:70},
+  vp:    {type:'overlay', color:'#64748b', lw:1, label:'Vol Profile'},
+}
+
+function toggleInd(key) {
+  if (_activeInds.has(key)) {
+    _activeInds.delete(key)
+  } else {
+    _activeInds.add(key)
+  }
+  // Update button style
+  const btn = document.querySelector(`.ibtn-ind[data-ind="${key}"]`)
+  if (btn) {
+    const cfg = IND_CFG[key] || {}
+    const on = _activeInds.has(key)
+    btn.style.background = on ? (cfg.color + '22') : 'transparent'
+    btn.style.color = on ? cfg.color : '#94a3b8'
+    btn.style.borderColor = on ? cfg.color : 'var(--border)'
+  }
+  // Redraw chart with new indicator set
+  if (window._lwcChart && window._lwcCandles) {
+    _applyActiveIndicators(window._lwcChart, window._lwcCandles,
+      sd[mdlSym]?.analysis || {})
+  }
+}
+
+// ── Math helpers ──────────────────────────────────────────────
+function _calcMA(closes, period) {
+  const out = []
+  for (let i = period - 1; i < closes.length; i++) {
+    const val = closes.slice(i - period + 1, i + 1).reduce((a,b) => a+b, 0) / period
+    out.push(+val.toFixed(4))
+  }
+  return out  // aligned to closes[period-1..]
+}
+
+function _calcEMA(closes, period) {
+  const k = 2 / (period + 1)
+  const out = [closes[0]]
+  for (let i = 1; i < closes.length; i++) {
+    out.push(+(closes[i] * k + out[i-1] * (1 - k)).toFixed(4))
+  }
+  return out
+}
+
+function _calcBB(closes, period=20, mult=2) {
+  const mid = [], upper = [], lower = []
+  for (let i = period - 1; i < closes.length; i++) {
+    const slice = closes.slice(i - period + 1, i + 1)
+    const m = slice.reduce((a,b) => a+b, 0) / period
+    const sd = Math.sqrt(slice.reduce((a,b) => a + (b-m)**2, 0) / period)
+    mid.push(+m.toFixed(4))
+    upper.push(+(m + mult*sd).toFixed(4))
+    lower.push(+(m - mult*sd).toFixed(4))
+  }
+  return {mid, upper, lower}
+}
+
+function _calcRSI(closes, period=14) {
+  const rsi = new Array(period).fill(null)
+  let avgGain = 0, avgLoss = 0
+  for (let i = 1; i <= period; i++) {
+    const diff = closes[i] - closes[i-1]
+    diff >= 0 ? (avgGain += diff) : (avgLoss -= diff)
+  }
+  avgGain /= period; avgLoss /= period
+  rsi.push(avgLoss === 0 ? 100 : +(100 - 100/(1 + avgGain/avgLoss)).toFixed(2))
+  for (let i = period + 1; i < closes.length; i++) {
+    const diff = closes[i] - closes[i-1]
+    avgGain = (avgGain * (period-1) + Math.max(diff,0)) / period
+    avgLoss = (avgLoss * (period-1) + Math.max(-diff,0)) / period
+    rsi.push(avgLoss === 0 ? 100 : +(100 - 100/(1 + avgGain/avgLoss)).toFixed(2))
+  }
+  return rsi
+}
+
+function _calcMACD(closes, fast=12, slow=26, sig=9) {
+  const emaF = _calcEMA(closes, fast)
+  const emaS = _calcEMA(closes, slow)
+  const macdLine = emaF.map((v,i) => +(v - emaS[i]).toFixed(4))
+  const sigLine = _calcEMA(macdLine.slice(slow-1), sig)
+  const hist = sigLine.map((v,i) => +(macdLine[slow-1+i] - v).toFixed(4))
+  return {macdLine: macdLine.slice(slow-1), sigLine, hist, offset: slow-1}
+}
+
+function _calcStoch(candles, period=14, smooth=3) {
+  const k = [], d = []
+  for (let i = period - 1; i < candles.length; i++) {
+    const sl = candles.slice(i - period + 1, i + 1)
+    const hi = Math.max(...sl.map(b => b.high))
+    const lo = Math.min(...sl.map(b => b.low))
+    k.push(hi === lo ? 50 : +((candles[i].close - lo) / (hi - lo) * 100).toFixed(2))
+  }
+  for (let i = smooth - 1; i < k.length; i++) {
+    d.push(+(k.slice(i - smooth + 1, i + 1).reduce((a,b) => a+b, 0) / smooth).toFixed(2))
+  }
+  return {k, d, offset: period - 1, dOffset: smooth - 1}
+}
+
+function _calcADX(candles, period=14) {
+  if (candles.length < period + 1) return []
+  const adx = new Array(period * 2).fill(null)
+  let sumPDM = 0, sumNDM = 0, sumTR = 0
+  for (let i = 1; i <= period; i++) {
+    const hi = candles[i].high, lo = candles[i].low
+    const phi = candles[i-1].high, plo = candles[i-1].low, pc = candles[i-1].close
+    const tr = Math.max(hi-lo, Math.abs(hi-pc), Math.abs(lo-pc))
+    const pdm = Math.max(hi-phi, 0); const ndm = Math.max(plo-lo, 0)
+    sumTR += tr; sumPDM += (pdm>ndm?pdm:0); sumNDM += (ndm>pdm?ndm:0)
+  }
+  let smoothPDM = sumPDM, smoothNDM = sumNDM, smoothTR = sumTR
+  let dx = Math.abs(smoothPDM/smoothTR - smoothNDM/smoothTR) / ((smoothPDM/smoothTR + smoothNDM/smoothTR) || 1) * 100
+  let adxVal = dx
+  adx.push(+adxVal.toFixed(2))
+  for (let i = period + 1; i < candles.length; i++) {
+    const hi = candles[i].high, lo = candles[i].low, pc = candles[i-1].close
+    const phi = candles[i-1].high, plo = candles[i-1].low
+    const tr = Math.max(hi-lo, Math.abs(hi-pc), Math.abs(lo-pc))
+    const pdm = Math.max(hi-phi,0), ndm = Math.max(plo-lo,0)
+    smoothTR = smoothTR - smoothTR/period + tr
+    smoothPDM = smoothPDM - smoothPDM/period + (pdm>ndm?pdm:0)
+    smoothNDM = smoothNDM - smoothNDM/period + (ndm>pdm?ndm:0)
+    const di_p = smoothPDM/smoothTR*100, di_n = smoothNDM/smoothTR*100
+    dx = Math.abs(di_p-di_n)/((di_p+di_n)||1)*100
+    adxVal = (adxVal*(period-1) + dx) / period
+    adx.push(+adxVal.toFixed(2))
+  }
+  return adx
+}
+
+function _calcOBV(candles) {
+  const obv = [0]
+  for (let i = 1; i < candles.length; i++) {
+    const diff = candles[i].close - candles[i-1].close
+    obv.push(obv[i-1] + (diff > 0 ? candles[i].volume : diff < 0 ? -candles[i].volume : 0))
+  }
+  return obv
+}
+
+function _calcIchimoku(candles) {
+  const tenkan=[], kijun=[], senkouA=[], senkouB=[], chikou=[]
+  const hh=(bars,n,i)=>Math.max(...bars.slice(Math.max(0,i-n+1),i+1).map(b=>b.high))
+  const ll=(bars,n,i)=>Math.min(...bars.slice(Math.max(0,i-n+1),i+1).map(b=>b.low))
+  for (let i = 0; i < candles.length; i++) {
+    tenkan.push(+((hh(candles,9,i)+ll(candles,9,i))/2).toFixed(4))
+    kijun.push(+((hh(candles,26,i)+ll(candles,26,i))/2).toFixed(4))
+    if (i >= 25) {
+      senkouA.push(+((tenkan[i-25]+kijun[i-25])/2).toFixed(4))
+      senkouB.push(+((hh(candles,52,i-25)+ll(candles,52,i-25))/2).toFixed(4))
+    }
+    if (i + 26 < candles.length) chikou.push({i, val: candles[i].close})
+  }
+  return {tenkan, kijun, senkouA, senkouB, chikou}
+}
+
+// ── Sub-panel renderer (Canvas-based) ───────────────────────
+function _renderSubPanel(key, times, values, cfg, extra) {
+  const container = document.getElementById('indSubPanel')
+  if (!container) return
+  container.style.display = 'block'
+
+  // Remove existing canvas for this key
+  const existing = document.getElementById('subChart_' + key)
+  if (existing) existing.remove()
+
+  const h = cfg.height || 80
+  const wrap = document.createElement('div')
+  wrap.id = 'subChart_' + key
+  wrap.style.cssText = `position:relative;margin-bottom:4px;border-top:1px solid var(--border);padding-top:2px`
+
+  const label = document.createElement('div')
+  label.style.cssText = `font-size:9px;color:var(--sub);padding:0 4px;position:absolute;top:4px;left:4px;z-index:2`
+  label.textContent = cfg.label
+  wrap.appendChild(label)
+
+  const closeBtn = document.createElement('button')
+  closeBtn.textContent = '✕'
+  closeBtn.style.cssText = `position:absolute;top:2px;right:4px;z-index:3;border:none;background:none;color:var(--sub);font-size:9px;cursor:pointer;padding:0`
+  closeBtn.onclick = () => { _activeInds.delete(key); toggleInd(key) }
+  wrap.appendChild(closeBtn)
+
+  const canvas = document.createElement('canvas')
+  canvas.style.cssText = `display:block;width:100%;height:${h}px`
+  canvas.height = h
+  wrap.appendChild(canvas)
+  container.appendChild(wrap)
+
+  // Draw on canvas after layout
+  requestAnimationFrame(() => {
+    canvas.width = canvas.offsetWidth || 340
+    const ctx = canvas.getContext('2d')
+    const W = canvas.width, H = h
+    const isDark = !document.body.classList.contains('light')
+    ctx.clearRect(0, 0, W, H)
+
+    // Background
+    ctx.fillStyle = isDark ? '#0d1117' : '#ffffff'
+    ctx.fillRect(0, 0, W, H)
+
+    // Grid lines
+    ctx.strokeStyle = isDark ? 'rgba(255,255,255,.05)' : 'rgba(0,0,0,.05)'
+    ctx.lineWidth = 1
+    for (let i = 1; i < 4; i++) {
+      const y = H * i / 4
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke()
+    }
+
+    // Reference lines (RSI: 30/70, Stoch: 20/80, ADX: 25)
+    if (extra?.refs) {
+      extra.refs.forEach(({val, min, max, color}) => {
+        const y = H - (val - min) / (max - min) * H
+        ctx.strokeStyle = color || 'rgba(255,255,255,.2)'
+        ctx.setLineDash([3,3]); ctx.lineWidth = 0.5
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke()
+        ctx.setLineDash([])
+      })
+    }
+
+    // Draw main series
+    const validVals = values.filter(v => v !== null && isFinite(v))
+    if (!validVals.length) return
+    const mn = extra?.fixedMin ?? Math.min(...validVals)
+    const mx = extra?.fixedMax ?? Math.max(...validVals)
+    const range = mx - mn || 1
+
+    const drawLine = (vals, color, lw=1.5) => {
+      ctx.strokeStyle = color; ctx.lineWidth = lw; ctx.beginPath()
+      let started = false
+      vals.forEach((v, i) => {
+        if (v === null || !isFinite(v)) { started = false; return }
+        const x = i / (vals.length - 1) * W
+        const y = H - (v - mn) / range * H
+        started ? ctx.lineTo(x, y) : (ctx.moveTo(x, y), started = true)
+      })
+      ctx.stroke()
+    }
+
+    // Histogram (MACD hist, volume)
+    if (extra?.hist) {
+      extra.hist.forEach((v, i) => {
+        if (v === null || !isFinite(v)) return
+        const x = i / (extra.hist.length - 1) * W
+        const barW = Math.max(1, W / extra.hist.length - 1)
+        const zeroY = H - (0 - mn) / range * H
+        const barH = (v / range) * H
+        ctx.fillStyle = v >= 0 ? 'rgba(0,230,118,.5)' : 'rgba(240,48,80,.5)'
+        ctx.fillRect(x - barW/2, Math.min(zeroY, zeroY - barH), barW, Math.abs(barH))
+      })
+    }
+
+    drawLine(values, cfg.color)
+
+    // Second line (MACD signal, Stoch D)
+    if (extra?.line2) drawLine(extra.line2, extra.line2Color || '#f59e0b', 1)
+
+    // Labels at edges
+    ctx.fillStyle = isDark ? '#6b7280' : '#9ca3af'
+    ctx.font = '8px monospace'
+    if (isFinite(mx)) ctx.fillText(mx.toFixed(1), 2, 10)
+    if (isFinite(mn)) ctx.fillText(mn.toFixed(1), 2, H - 2)
+    if (values.length > 0) {
+      const last = values.filter(v => v !== null).pop()
+      if (last !== undefined) ctx.fillText(last.toFixed(1), W - 28, 10)
+    }
+  })
+}
+
+// ── Hide all sub-panel entries ────────────────────────────────
+function _clearSubPanels() {
+  const container = document.getElementById('indSubPanel')
+  if (container) { container.innerHTML = ''; container.style.display = 'none' }
+}
+
+// ── Main: apply all active indicators to chart ───────────────
+function _applyActiveIndicators(chart, candles, analysis) {
+  if (!chart || !candles || !candles.length) return
+
+  // Remove all existing overlay series
+  Object.values(window._indSeries || {}).forEach(s => {
+    try { chart.removeSeries(s) } catch(e) {}
+  })
+  window._indSeries = {}
+  _clearSubPanels()
+
+  const closes = candles.map(b => b.close)
+  const times  = candles.map(b => b.time)
+  const toSeries = (vals, offset=0) =>
+    vals.map((v, i) => ({time: times[i + offset], value: v})).filter(x => x.value !== null && isFinite(x.value))
+
+  const addLine = (key, data, color, lw=1, ls=0, title='') => {
+    try {
+      const s = chart.addLineSeries({color, lineWidth:lw, lineStyle:ls,
+        priceLineVisible:false, lastValueVisible:true, title})
+      s.setData(data)
+      window._indSeries[key] = s
+    } catch(e) {}
+  }
+
+  // ── Overlay indicators ───────────────────────────────────
+  if (_activeInds.has('ma5'))   addLine('ma5',   toSeries(_calcMA(closes,5),4),   '#06b6d4', 1, 0, 'MA5')
+  if (_activeInds.has('ma10'))  addLine('ma10',  toSeries(_calcMA(closes,10),9),  '#f59e0b', 1, 0, 'MA10')
+  if (_activeInds.has('ma20'))  addLine('ma20',  toSeries(_calcMA(closes,20),19), '#ffd600', 1.5, 0, 'MA20')
+  if (_activeInds.has('ma50'))  addLine('ma50',  toSeries(_calcMA(closes,50),49), '#a855f7', 1.5, 0, 'MA50')
+  if (_activeInds.has('ma200')) addLine('ma200', toSeries(_calcMA(closes,200),199), '#f03050', 1, 2, 'MA200')
+
+  // EMA
+  if (_activeInds.has('ema12')) addLine('ema12', toSeries(_calcEMA(closes,12)), '#34d399', 1, 0, 'EMA12')
+  if (_activeInds.has('ema26')) addLine('ema26', toSeries(_calcEMA(closes,26)), '#fb923c', 1, 0, 'EMA26')
+  if (_activeInds.has('ema50')) addLine('ema50', toSeries(_calcEMA(closes,50)), '#818cf8', 1, 0, 'EMA50')
+
+  // Bollinger Bands
+  if (_activeInds.has('bb')) {
+    const bb = _calcBB(closes)
+    addLine('bb_mid',   toSeries(bb.mid, 19),   '#64748b', 1, 0, 'BB Mid')
+    addLine('bb_upper', toSeries(bb.upper, 19), '#64748b', 1, 2, 'BB+2σ')
+    addLine('bb_lower', toSeries(bb.lower, 19), '#64748b', 1, 2, 'BB-2σ')
+  }
+
+  // VWAP (horizontal line at VWAP value)
+  if (_activeInds.has('vwap')) {
+    const vwapVal = analysis?.vwap || sd[mdlSym]?.analysis?.vwap || 0
+    if (vwapVal > 0) {
+      addLine('vwap', [{time:times[0],value:vwapVal},{time:times[times.length-1],value:vwapVal}],
+        '#22d3ee', 1, 1, 'VWAP')
+    }
+  }
+
+  // Ichimoku Cloud
+  if (_activeInds.has('ich') && candles.length >= 52) {
+    const ich = _calcIchimoku(candles)
+    addLine('ich_t',  ich.tenkan.map((v,i)=>({time:times[i],value:v})), '#ef4444', 1, 0, 'Tenkan')
+    addLine('ich_k',  ich.kijun.map((v,i)=>({time:times[i],value:v})),  '#3b82f6', 1, 0, 'Kijun')
+    if (ich.senkouA.length) {
+      const offset = 25
+      addLine('ich_a', ich.senkouA.map((v,i)=>({time:times[i+offset]||times[times.length-1],value:v})), 'rgba(0,230,118,.5)', 1, 0, 'Senkou A')
+      addLine('ich_b', ich.senkouB.map((v,i)=>({time:times[i+offset]||times[times.length-1],value:v})), 'rgba(240,48,80,.5)', 1, 0, 'Senkou B')
+    }
+  }
+
+  // Fibonacci Retracement
+  if (_activeInds.has('fib') && candles.length >= 10) {
+    const cl2 = closes.slice(-60)
+    const hi = Math.max(...cl2), lo = Math.min(...cl2)
+    const swing = hi - lo
+    if (swing > 0) {
+      const fibs = [0, 0.236, 0.382, 0.5, 0.618, 0.786, 1]
+      const fibClr = ['#ef4444','#f97316','#eab308','#22c55e','#3b82f6','#8b5cf6','#ef4444']
+      fibs.forEach((f, i) => {
+        const lvl = hi - swing * f
+        addLine(`fib_${i}`,
+          [{time:times[0],value:lvl},{time:times[times.length-1],value:lvl}],
+          fibClr[i]+'aa', 1, 1, `Fib ${(f*100).toFixed(1)}%`)
+      })
+    }
+  }
+
+  // Volume Profile (right-side bars drawn on canvas overlay)
+  if (_activeInds.has('vp')) {
+    _drawVolumeProfile(candles)
+  }
+
+  // ── Sub-panel indicators (drawn on canvas below chart) ───
+  if (_activeInds.has('rsi')) {
+    const rsi = _calcRSI(closes)
+    _renderSubPanel('rsi', times, rsi, IND_CFG.rsi, {
+      fixedMin:0, fixedMax:100,
+      refs:[{val:70,min:0,max:100,color:'rgba(240,48,80,.3)'},{val:30,min:0,max:100,color:'rgba(0,230,118,.3)'}]
+    })
+  }
+  if (_activeInds.has('macd')) {
+    const m = _calcMACD(closes)
+    _renderSubPanel('macd', times.slice(m.offset), m.macdLine, IND_CFG.macd,
+      {line2: m.sigLine, line2Color:'#f59e0b', hist: m.hist})
+  }
+  if (_activeInds.has('stoch')) {
+    const st = _calcStoch(candles)
+    _renderSubPanel('stoch', times.slice(st.offset), st.k, IND_CFG.stoch, {
+      fixedMin:0, fixedMax:100,
+      line2: [...new Array(st.dOffset).fill(null), ...st.d],
+      line2Color:'#f03050',
+      refs:[{val:80,min:0,max:100,color:'rgba(240,48,80,.3)'},{val:20,min:0,max:100,color:'rgba(0,230,118,.3)'}]
+    })
+  }
+  if (_activeInds.has('adx')) {
+    const adxVals = _calcADX(candles)
+    _renderSubPanel('adx', times, adxVals, IND_CFG.adx, {
+      fixedMin:0, fixedMax:60,
+      refs:[{val:25,min:0,max:60,color:'rgba(255,200,0,.4)'}]
+    })
+  }
+  if (_activeInds.has('obv')) {
+    const obvVals = candles.map((b,i,arr) => ({...b, volume: b.volume || 0}))
+    const obvData = _calcOBV(obvVals)
+    _renderSubPanel('obv', times, obvData, IND_CFG.obv, {})
+  }
+  if (_activeInds.has('vol')) {
+    const vols = candles.map(b => b.volume || 0)
+    _renderSubPanel('vol', times, vols, IND_CFG.vol, {fixedMin:0})
+  }
+}
+
+// ── Volume Profile overlay ────────────────────────────────────
+function _drawVolumeProfile(candles) {
+  const el = document.getElementById('lwcWrap')
+  if (!el) return
+  const existing = document.getElementById('vpCanvas')
+  if (existing) existing.remove()
+
+  const canvas = document.createElement('canvas')
+  canvas.id = 'vpCanvas'
+  canvas.style.cssText = 'position:absolute;top:0;right:0;width:60px;height:100%;z-index:3;pointer-events:none;opacity:.7'
+  el.style.position = 'relative'
+  el.appendChild(canvas)
+
+  requestAnimationFrame(() => {
+    canvas.width = 60; canvas.height = canvas.offsetHeight || 250
+    const ctx = canvas.getContext('2d')
+    const W = 60, H = canvas.height
+
+    // Build price buckets
+    const prices = candles.map(b => b.close).filter(v => v > 0)
+    if (!prices.length) return
+    const pMin = Math.min(...prices), pMax = Math.max(...prices)
+    const range = pMax - pMin || 1
+    const BINS = 20
+    const bins = new Array(BINS).fill(0)
+    candles.forEach(b => {
+      const idx = Math.min(BINS-1, Math.floor((b.close - pMin) / range * BINS))
+      bins[idx] += (b.volume || 1)
+    })
+    const maxBin = Math.max(...bins) || 1
+    const isDark = !document.body.classList.contains('light')
+    ctx.clearRect(0, 0, W, H)
+    bins.forEach((v, i) => {
+      const barW = (v / maxBin) * (W - 4)
+      const y = H - (i+1) / BINS * H
+      const bH = H / BINS - 1
+      ctx.fillStyle = isDark ? 'rgba(99,102,241,.5)' : 'rgba(99,102,241,.4)'
+      ctx.fillRect(W - barW - 2, y, barW, bH)
+    })
+    // POC label
+    const pocIdx = bins.indexOf(maxBin)
+    const pocPrice = pMin + (pocIdx + 0.5) / BINS * range
+    ctx.fillStyle = '#f59e0b'
+    ctx.font = '7px monospace'
+    ctx.fillText('POC', 2, H - (pocIdx+0.5)/BINS*H)
+  })
+}
+
+// ── Sync button states on modal open ─────────────────────────
+function _syncIndButtons() {
+  document.querySelectorAll('.ibtn-ind').forEach(btn => {
+    const key = btn.dataset.ind
+    const cfg = IND_CFG[key] || {}
+    const on = _activeInds.has(key)
+    btn.style.background = on ? (cfg.color + '22') : 'transparent'
+    btn.style.color = on ? cfg.color : '#94a3b8'
+    btn.style.borderColor = on ? cfg.color : 'var(--border)'
+  })
+}
 
 console.log('[SMA New Features] Heatmap + Insider + Excel + Share loaded ✅')
 
